@@ -42,7 +42,9 @@
 // $('#' + event.which).addClass('highlighted')
 // in key up above $('.highlighted').removeClass('highlighted);
     // })
-
+    
+var startTime;
+var errorCount = 0
 $(document).keypress(function (event) {
     event.preventDefault(); // this will prevent the screen from scrolling when the space bar is pressed
    if (!startTime) { // startTime is undefined at this time. ! says to set it
@@ -77,6 +79,7 @@ if (confirm('Would you like to play again')) {
     $('#sentence').text(currentSentence);
     $('#target-letter').text(currentLetter);
     $('#feedback').empty();
+    $('#yellow-block').css('left', '15px');
     startTime = undefined;
 }
 }, 2000);
@@ -91,17 +94,19 @@ if (confirm('Would you like to play again')) {
         $('#target-letter').text(currentLetter);
 $('#feedback').empty();
         // TO DONE: clear out the feedback div (checks and Xs)
+        $('#yellow-block').css('left', '15px');
     }
 } else {
 // not at the end of the sentence...move on to the next letter
 currentLetter = currentSentence.charAt(letterIndex);
 $('#target-letter').text(currentLetter);
+$('#yellow-block').css('left', '+=17.5px');
 }
 
 
 });
-var startTime;
-var errorCount = 0
+
+
 // var timer = 0;
 // var seconds = 0;//time elapsed
 // var t;
